@@ -1,0 +1,33 @@
+body {
+	background: black;
+	font-family: 'Caveat Brush', cursive;
+}
+
+p {
+	font-size: 150%;
+	color: cornflowerblue;
+}
+.sein {
+	width: 80%;
+	height: auto;
+	margin-left:100px;
+}
+
+.jumbotron {
+	    background: transparent;
+	    margin-bottom: 0px;
+
+}
+
+.panel-body {
+	border-style: outset;
+	border-width: 5px;
+}
+
+.group {
+	max-height: 100%;
+    max-width: 100%;}
+
+.left {
+	height: 400px;
+}
