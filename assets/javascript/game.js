@@ -51,17 +51,19 @@ function inArray(needle, haystack) {
 
 function gameOn() {
 
+    //define empty guess array for comparison
     var guesses = [];
 
-    var guessRem = 15;
+    //define total of guesses
+    var guessRem = 5;
 
-    //clear guesses
+    //clear guesses in HTML div on restart
     var node = document.getElementById('guesses');
     while (node.hasChildNodes()) {
         node.removeChild(node.firstChild);
     }  
 
-    //clear remainging
+    //clear remainging in HTML div on restart
     var node = document.getElementById('guess-rem');
     while (node.hasChildNodes()) {
         node.removeChild(node.firstChild);
@@ -71,7 +73,7 @@ function gameOn() {
     var word = words[Math.floor(Math.random() * words.length)]; 
     var wordLength = word.length;
 
-    //show blank spaces
+    //show blank spaces in HTML div corresponding to word
     var div = document.getElementById('current-word');
     div.innerHTML = blankLen(wordLength);
 
@@ -83,34 +85,28 @@ function gameOn() {
     // Determines which key was pressed
     document.onkeyup = function(event) {  
 
+            //clear remainging in HTML div on restart
+            var node = document.getElementById('game-over');
+            while (node.hasChildNodes()) {
+                node.removeChild(node.firstChild);
+            } 
+
             //transfer what key pressed to userGuess
             var userGuess = event.key;
 
-            //increment guess
+            //increment guess after key is pressed
             guess++;
-
-            // //debug code
-            // console.log(userGuess);
-            // console.log(guesses);
-            // console.log(inArray(userGuess, guesses));
-
-            
 
             //have you guessed this letter before?
             if (!(inArray(userGuess, guesses))) {
-
-                console.log(blankArray.join(""));
-                console.log(word);
 
                 // decrement guess
                 guessRem--;  
 
                 // push guess to array if not already in there
-                guesses.push(userGuess); 
+                guesses.push(userGuess);
 
-                
-
-                //filling in guesses remaining
+                //filling in guesses remaining on screen
                 var div = document.getElementById('guess-rem');
                 div.innerHTML = guessRem;
 
@@ -118,17 +114,11 @@ function gameOn() {
                 var div = document.getElementById('guesses');
                 div.innerHTML += userGuess + ', ';
 
-                
-                // // debug stuff
-                // console.log(userGuess);
-                // console.log(guess);
-                // console.log(guessRem);
-
                 //is letter in word?
                 if (word.match(userGuess)) {
                     locOfStr = (locations( userGuess, word));
 
-                    //insert letter in blank space
+                    //insert letter in blank space in current word in HTML
                     var div = document.getElementById('current-word');
                     div.innerHTML = insertLetter(locOfStr, userGuess);
 
@@ -137,27 +127,27 @@ function gameOn() {
                     console.log(word);
                     console.log(wins);
 
-                    }
-                    //check if you won
-                    if (blankArray.join("") === word) {
-                        wins++;
-                        gameOn();
-                    }
+                }
+
+                //check if you won
+                if (blankArray.join("") === word) {
+                    wins++;
+                    gameOn();
+                }
+                // no more guesses? game over!
+                else if (guessRem == 0) {
+                //filling in guesses remaining on screen with game over
+                var div = document.getElementById('game-over');
+                div.innerHTML = gameOver;
+                gameOn();
             }
     
 
-            
-            // no more guesses? game over!
-            else if (guessRem == 0) {
-                alert('game over');
             }
         
     };
 
 };
-
-
-var alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 
 var words = ["jerry", "kramer", "newman", "elaine", "george", "davola", "improv", "puddy"];
 
@@ -167,8 +157,7 @@ var wins = 0;
 
 var locOfStr = [];
 
-
-
+var gameOver = "Game Over, try again!"
 
 //start game on key press
 document.onkeyup = function() {
