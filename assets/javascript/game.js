@@ -8,7 +8,7 @@ function blankLen (blank) {
     
 
  }
- return blankArray.join("  ");
+ return blankArray.join("");
 }
 
 //return index of letter in word
@@ -23,7 +23,7 @@ function insertLetter (loc, let) {
     for (var i = 0; i < length; i++)
         blankArray[loc[i]] = let;
 
-return blankArray;
+return blankArray.join("");
 }
 
 
@@ -58,6 +58,7 @@ function gameOn() {
     //show blank spaces
     var div = document.getElementById('current-word');
     div.innerHTML = blankLen(wordLength);
+
     
     // Determines which key was pressed
     document.onkeyup = function(event) {  
@@ -68,21 +69,27 @@ function gameOn() {
             //increment guess
             guess++;
 
-            //debug code
-            console.log(userGuess);
-            console.log(guesses);
-            console.log(inArray(userGuess, guesses));
+            // //debug code
+            // console.log(userGuess);
+            // console.log(guesses);
+            // console.log(inArray(userGuess, guesses));
 
-                
-        
-            //check current guess agaist array of guesses, if not there, magic happens
+            
+
+            //have you guessed this letter before?
             if (!(inArray(userGuess, guesses))) {
-                
+
+                console.log(blankArray.join(""));
+                console.log(word);
+
                 // decrement guess
                 guessRem--;  
 
                 // push guess to array if not already in there
                 guesses.push(userGuess); 
+
+                var div = document.getElementById('wins');
+                div.innerHTML = wins;
 
                 //filling in guesses remaining
                 var div = document.getElementById('guess-rem');
@@ -93,27 +100,31 @@ function gameOn() {
                 div.innerHTML += userGuess + ', ';
 
                 
-
-                letterIndex(word, userGuess);
-
-
-                // debug stuff
-                console.log(userGuess);
-                console.log(guess);
-                console.log(guessRem);
+                // // debug stuff
+                // console.log(userGuess);
+                // console.log(guess);
+                // console.log(guessRem);
 
                 //is letter in word?
                 if (word.match(userGuess)) {
                     locOfStr = (locations( userGuess, word));
+
+                    //insert letter in blank space
                     var div = document.getElementById('current-word');
                     div.innerHTML = insertLetter(locOfStr, userGuess);
-                    
 
-                }
-
-
-
+                    //debug
+                    console.log(blankArray.join(""));
+                    console.log(word);
+                    }
+                    //check if you won
+                    if (blankArray.join("") === word) {
+                        wins++;
+                        }
             }
+    
+
+            
             // no more guesses? game over!
             else if (guessRem == 0) {
                 alert('game over');
@@ -129,6 +140,8 @@ var alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m",
 var words = ["jerry"];
 
 var guess = 0;
+
+var wins = 0;
 
 var guessRem = 15;
 
