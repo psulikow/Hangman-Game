@@ -1,4 +1,3 @@
-
 //function to create array of _ _ _ 
 
 function blankLen (blank) {
@@ -50,6 +49,20 @@ function inArray(needle, haystack) {
 
 
 function gameOn() {
+
+    var guesses = [];
+
+    //clear guesses
+    var node = document.getElementById('guesses');
+    while (node.hasChildNodes()) {
+        node.removeChild(node.firstChild);
+    }  
+
+    //clear remainging
+    var node = document.getElementById('guess-rem');
+    while (node.hasChildNodes()) {
+        node.removeChild(node.firstChild);
+    }  
 
     //generate random word from word array
     var word = words[Math.floor(Math.random() * words.length)]; 
@@ -120,7 +133,8 @@ function gameOn() {
                     //check if you won
                     if (blankArray.join("") === word) {
                         wins++;
-                        }
+                        gameOn();
+                    }
             }
     
 
@@ -137,15 +151,16 @@ function gameOn() {
 
 var alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 
-var words = ["jerry"];
+var words = ["jerry", "kramer"];
 
 var guess = 0;
 
 var wins = 0;
 
-var guessRem = 15;
+    var guessRem = 15;
 
-var guesses = [];
+
+
 
 var locOfStr = [];
 
@@ -159,7 +174,3 @@ gameOn();
 
 };
 
-
-
-
- 

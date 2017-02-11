@@ -35,3 +35,7 @@ p {
 .right {
 	height: 400px;
 }
+
+.guess {
+	height: 40px;
+}
