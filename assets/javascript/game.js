@@ -1,3 +1,4 @@
+
 //function to create array of _ _ _ 
 
 function blankLen (blank) {
@@ -52,6 +53,8 @@ function gameOn() {
 
     var guesses = [];
 
+    var guessRem = 15;
+
     //clear guesses
     var node = document.getElementById('guesses');
     while (node.hasChildNodes()) {
@@ -71,6 +74,10 @@ function gameOn() {
     //show blank spaces
     var div = document.getElementById('current-word');
     div.innerHTML = blankLen(wordLength);
+
+    //show 0 wins
+    var div = document.getElementById('wins');
+    div.innerHTML = wins;
 
     
     // Determines which key was pressed
@@ -101,8 +108,7 @@ function gameOn() {
                 // push guess to array if not already in there
                 guesses.push(userGuess); 
 
-                var div = document.getElementById('wins');
-                div.innerHTML = wins;
+                
 
                 //filling in guesses remaining
                 var div = document.getElementById('guess-rem');
@@ -129,6 +135,8 @@ function gameOn() {
                     //debug
                     console.log(blankArray.join(""));
                     console.log(word);
+                    console.log(wins);
+
                     }
                     //check if you won
                     if (blankArray.join("") === word) {
@@ -157,11 +165,6 @@ var guess = 0;
 
 var wins = 0;
 
-    var guessRem = 15;
-
-
-
-
 var locOfStr = [];
 
 
@@ -173,4 +176,3 @@ document.onkeyup = function() {
 gameOn();
 
 };
-
