@@ -151,7 +151,7 @@ function gameOn() {
 
 var alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 
-var words = ["jerry", "kramer"];
+var words = ["jerry", "kramer", "newman", "elaine", "george", "davola", "improv", "puddy"];
 
 var guess = 0;
 
