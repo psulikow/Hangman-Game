@@ -1,6 +1,5 @@
 
 //function to create array of _ _ _ 
-
 function blankLen (blank) {
     blankArray = [];
     for (var i = 0; i < blank; i++) {
@@ -51,11 +50,12 @@ function inArray(needle, haystack) {
 
 function gameOn() {
 
+    audio.pause();
     //define empty guess array for comparison
     var guesses = [];
 
     //define total of guesses
-    var guessRem = 5;
+    var guessRem = 15;
 
     //clear guesses in HTML div on restart
     var node = document.getElementById('guesses');
@@ -159,9 +159,17 @@ var locOfStr = [];
 
 var gameOver = "Game Over, try again!"
 
+var audio = new Audio('assets/images/theme.mp3');
+
+
+var silent = new Audio();
+
+audio.play(); 
+
+
+
 //start game on key press
 document.onkeyup = function() {
-
 gameOn();
 
 };
