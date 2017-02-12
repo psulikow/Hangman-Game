@@ -1,20 +1,65 @@
+//insert picture functions
+function kramer() {
+    document.getElementById("people").src = "assets/images/kramer.jpg";
+}
+
+function jerry() {
+    document.getElementById("people").src = "assets/images/jerry.png";
+}
+
+function elaine() {
+    document.getElementById("people").src = "assets/images/elaine.jpg";
+}
+
+function george() {
+    document.getElementById("people").src = "assets/images/george.jpg";
+}
+
+function puddy() {
+    document.getElementById("people").src = "assets/images/puddy.jpg";
+}
+
+function newman() {
+    document.getElementById("people").src = "assets/images/newman.jpg";
+}
+
+function pederman() {
+    document.getElementById("people").src = "assets/images/pederman.png";
+}
+
+function bania() {
+    document.getElementById("people").src = "assets/images/bania.jpg";
+}
+
+function davola() {
+    document.getElementById("people").src = "assets/images/davola.jpg";
+}
+
+function kruger() {
+    document.getElementById("people").src = "assets/images/kruger.jpg";
+}
+
+function lippman() {
+    document.getElementById("people").src = "assets/images/lippman.jpg";
+}
+
+function whatley() {
+    document.getElementById("people").src = "assets/images/whatley.jpg";
+}
 
 //function to create array of _ _ _ 
 function blankLen (blank) {
     blankArray = [];
     for (var i = 0; i < blank; i++) {
         blankArray.push(' - ');
-    
-
- }
- return blankArray.join("");
+    }
+    return blankArray.join("");
 }
 
 //return index of letter in word
 function letterIndex (w,l) {
     return w.indexOf(l);
 }
-
 
 //function to replace _ in array with letter
 function insertLetter (loc, let) {
@@ -130,8 +175,59 @@ function gameOn() {
                 }
 
                 //check if you won
-                if (blankArray.join("") === word) {
+                if (blankArray.join("") === word && word === "kramer") {
                     wins++;
+                    kramer();
+                    gameOn();
+                }
+                else if (blankArray.join("") === word && word === "elaine") {
+                    wins++;
+                    elaine();
+                    gameOn();
+                } 
+                else if (blankArray.join("") === word && word === "jerry") {
+                    wins++;
+                    jerry();
+                    gameOn();
+                }
+                else if (blankArray.join("") === word && word === "george") {
+                    wins++;
+                    george();
+                    gameOn();
+                }
+                else if (blankArray.join("") === word && word === "lippman") {
+                    wins++;
+                    lippman();
+                    gameOn();
+                }
+                else if (blankArray.join("") === word && word === "puddy") {
+                    wins++;
+                    puddy();
+                    gameOn();
+                }
+                else if (blankArray.join("") === word && word === "davola") {
+                    wins++;
+                    davola();
+                    gameOn();
+                }
+                else if (blankArray.join("") === word && word === "kruger") {
+                    wins++;
+                    kruger();
+                    gameOn();
+                }
+                else if (blankArray.join("") === word && word === "whatley") {
+                    wins++;
+                    whatley();
+                    gameOn();
+                }
+                else if (blankArray.join("") === word && word === "newman") {
+                    wins++;
+                    newman();
+                    gameOn();
+                }
+                else if (blankArray.join("") === word && word === "bania") {
+                    wins++;
+                    bania();
                     gameOn();
                 }
                 // no more guesses? game over!
@@ -149,7 +245,7 @@ function gameOn() {
 
 };
 
-var words = ["jerry", "kramer", "newman", "elaine", "george", "davola", "improv", "puddy"];
+var words = ["jerry", "kramer", "newman", "elaine", "george", "davola", "puddy", "kruger", "whatley", "bania", "lippman"];
 
 var guess = 0;
 
