@@ -1,49 +1,28 @@
 //insert picture functions
-function kramer() {
+function picture(w) {
+    if (w === "kramer")
     document.getElementById("people").src = "assets/images/kramer.jpg";
-}
-
-function jerry() {
+    else if (w === "jerry")
     document.getElementById("people").src = "assets/images/jerry.png";
-}
-
-function elaine() {
+    else if (w === "elaine")
     document.getElementById("people").src = "assets/images/elaine.jpg";
-}
-
-function george() {
+    else if (w === "george")
     document.getElementById("people").src = "assets/images/george.jpg";
-}
-
-function puddy() {
+    else if (w=== "puddy")
     document.getElementById("people").src = "assets/images/puddy.jpg";
-}
-
-function newman() {
+    else if (w=== "newman")
     document.getElementById("people").src = "assets/images/newman.jpg";
-}
-
-function pederman() {
+    else if (w=== "pederman")
     document.getElementById("people").src = "assets/images/pederman.png";
-}
-
-function bania() {
+    else if (w=== "bania")
     document.getElementById("people").src = "assets/images/bania.jpg";
-}
-
-function davola() {
+    else if (w=== "puddy")
     document.getElementById("people").src = "assets/images/davola.jpg";
-}
-
-function kruger() {
+    else if (w=== "kruger")
     document.getElementById("people").src = "assets/images/kruger.jpg";
-}
-
-function lippman() {
+    else if (w=== "lippman")
     document.getElementById("people").src = "assets/images/lippman.jpg";
-}
-
-function whatley() {
+    else if (w=== "whatley")
     document.getElementById("people").src = "assets/images/whatley.jpg";
 }
 
@@ -70,17 +49,11 @@ function insertLetter (loc, let) {
 return blankArray.join("");
 }
 
-
-
-
 function locations(substring,string){
   var a=[],i=-1;
   while((i=string.indexOf(substring,i+1)) >= 0) a.push(i);
   return a;
 }
-
-
-
 
 //function to check if user guess has been guessed before
 function inArray(needle, haystack) {
@@ -92,10 +65,11 @@ function inArray(needle, haystack) {
  return false;
 }
 
-
 function gameOn() {
 
+    //when game starts silence theme music
     audio.pause();
+
     //define empty guess array for comparison
     var guesses = [];
 
@@ -139,9 +113,6 @@ function gameOn() {
             //transfer what key pressed to userGuess
             var userGuess = event.key;
 
-            //increment guess after key is pressed
-            guess++;
-
             //have you guessed this letter before?
             if (!(inArray(userGuess, guesses))) {
 
@@ -167,67 +138,62 @@ function gameOn() {
                     var div = document.getElementById('current-word');
                     div.innerHTML = insertLetter(locOfStr, userGuess);
 
-                    //debug
-                    console.log(blankArray.join(""));
-                    console.log(word);
-                    console.log(wins);
-
                 }
 
                 //check if you won
                 if (blankArray.join("") === word && word === "kramer") {
                     wins++;
-                    kramer();
+                    picture(word);
                     gameOn();
                 }
                 else if (blankArray.join("") === word && word === "elaine") {
                     wins++;
-                    elaine();
+                    picture(word);
                     gameOn();
                 } 
                 else if (blankArray.join("") === word && word === "jerry") {
                     wins++;
-                    jerry();
+                    picture(word);
                     gameOn();
                 }
                 else if (blankArray.join("") === word && word === "george") {
                     wins++;
-                    george();
+                    picture(word);
                     gameOn();
                 }
                 else if (blankArray.join("") === word && word === "lippman") {
                     wins++;
-                    lippman();
+                    picture(word);
                     gameOn();
                 }
                 else if (blankArray.join("") === word && word === "puddy") {
                     wins++;
-                    puddy();
+                    picture(word);
                     gameOn();
                 }
                 else if (blankArray.join("") === word && word === "davola") {
                     wins++;
-                    davola();
+                    picture(word);
                     gameOn();
                 }
                 else if (blankArray.join("") === word && word === "kruger") {
                     wins++;
-                    kruger();
+                    picture(word);
                     gameOn();
                 }
                 else if (blankArray.join("") === word && word === "whatley") {
                     wins++;
-                    whatley();
+                    picture(word);
                     gameOn();
                 }
                 else if (blankArray.join("") === word && word === "newman") {
                     wins++;
-                    newman();
+                    picture(word);
                     gameOn();
                 }
                 else if (blankArray.join("") === word && word === "bania") {
                     wins++;
-                    bania();
+                    picture(word);
                     gameOn();
                 }
                 // no more guesses? game over!
@@ -236,18 +202,13 @@ function gameOn() {
                 var div = document.getElementById('game-over');
                 div.innerHTML = gameOver;
                 gameOn();
+                }
             }
-    
-
-            }
-        
     };
 
 };
 
 var words = ["jerry", "kramer", "newman", "elaine", "george", "davola", "puddy", "kruger", "whatley", "bania", "lippman"];
-
-var guess = 0;
 
 var wins = 0;
 
@@ -257,12 +218,7 @@ var gameOver = "Game Over, try again!"
 
 var audio = new Audio('assets/images/theme.mp3');
 
-
-var silent = new Audio();
-
 audio.play(); 
-
-
 
 //start game on key press
 document.onkeyup = function() {
