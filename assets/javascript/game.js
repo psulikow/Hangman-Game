@@ -67,9 +67,6 @@ function inArray(needle, haystack) {
 
 function gameOn() {
 
-    //when game starts silence theme music
-    audio.pause();
-
     //define empty guess array for comparison
     var guesses = [];
 
@@ -216,9 +213,6 @@ var locOfStr = [];
 
 var gameOver = "Game Over, try again!"
 
-var audio = new Audio('assets/images/theme.mp3');
-
-audio.play(); 
 
 //start game on key press
 document.onkeyup = function() {
